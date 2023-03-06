@@ -1,0 +1,260 @@
+<h1>Saisie d'une entrée</h1>
+<form [formGroup]="moveOutForm" (ngSubmit)="onSubmit()">
+  <!--warehousCode-->
+  <mat-form-field appearance="outline">
+    <mat-label>Code magasin de destination</mat-label>
+    <mat-select name="warehousCode" formControlName="warehousCode" required>
+      <mat-option
+        *ngFor="let warehousCode of warehousCodes"
+        [value]="warehousCode"
+      >
+        {{ warehousCode }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['warehousCode'].hasError('required') &&
+        (moveOutForm.controls['warehousCode'].dirty ||
+          moveOutForm.controls['warehousCode'].touched)
+      "
+    >
+      Code magasin de destination is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--warehousLabel-->
+  <mat-form-field appearance="outline">
+    <mat-label>Magasin de destination</mat-label>
+    <input
+      matInput
+      name="warehousLabel"
+      formControlName="warehousLabel"
+      type="text"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['warehousLabel'].hasError('required') &&
+        (moveOutForm.controls['warehousLabel'].dirty ||
+          moveOutForm.controls['warehousLabel'].touched)
+      "
+    >
+      Magasin de destination is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--description-->
+  <mat-form-field appearance="outline">
+    <mat-label>description</mat-label>
+    <input
+      matInput
+      name="description"
+      formControlName="description"
+      type="text"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['description'].hasError('required') &&
+        (moveOutForm.controls['description'].dirty ||
+          moveOutForm.controls['description'].touched)
+      "
+    >
+      WarehousLabel is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--customsStatus-->
+  <mat-form-field appearance="outline">
+    <mat-label>Statut douanier</mat-label>
+    <mat-select name="customsStatus" formControlName="customsStatus" required>
+      <mat-option
+        *ngFor="let customsStatus of customsStatusList"
+        [value]="customsStatus"
+      >
+        {{ customsStatus }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['customsStatus'].hasError('required') &&
+        (moveOutForm.controls['customsStatus'].dirty ||
+          moveOutForm.controls['customsStatus'].touched)
+      "
+    >
+      Statut douanier is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--refType-->
+  <mat-form-field appearance="outline">
+    <mat-label>Type de référence</mat-label>
+    <mat-select name="refType" formControlName="refType" required>
+      <mat-option *ngFor="let refType of refTypes" [value]="refType">
+        {{ refType }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['refType'].hasError('required') &&
+        (moveOutForm.controls['refType'].dirty ||
+          moveOutForm.controls['refType'].touched)
+      "
+    >
+      Type de référence is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--ref-->
+  <mat-form-field appearance="outline">
+    <mat-label>Référence</mat-label>
+    <input matInput name="ref" formControlName="ref" type="number" required />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['ref'].hasError('required') &&
+        (moveOutForm.controls['ref'].dirty ||
+          moveOutForm.controls['ref'].touched)
+      "
+    >
+      Référence is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--quantity-->
+  <mat-form-field appearance="outline">
+    <mat-label>Quantité</mat-label>
+    <input
+      matInput
+      name="quantity"
+      formControlName="quantity"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['quantity'].hasError('required') &&
+        (moveOutForm.controls['quantity'].dirty ||
+          moveOutForm.controls['quantity'].touched)
+      "
+    >
+      Quantité is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--weight-->
+  <mat-form-field appearance="outline">
+    <mat-label>Poids</mat-label>
+    <input
+      matInput
+      name="weight"
+      formControlName="weight"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['weight'].hasError('required') &&
+        (moveOutForm.controls['weight'].dirty ||
+          moveOutForm.controls['weight'].touched)
+      "
+    >
+      Poids is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--totalQuantity-->
+  <mat-form-field appearance="outline">
+    <mat-label>Quantité total</mat-label>
+    <input
+      matInput
+      name="totalQuantity"
+      formControlName="totalQuantity"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['totalQuantity'].hasError('required') &&
+        (moveOutForm.controls['totalQuantity'].dirty ||
+          moveOutForm.controls['totalQuantity'].touched)
+      "
+    >
+      Quantité total is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--totalWeight-->
+  <mat-form-field appearance="outline">
+    <mat-label>Poids total</mat-label>
+    <input
+      matInput
+      name="totalWeight"
+      formControlName="totalWeight"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['totalWeight'].hasError('required') &&
+        (moveOutForm.controls['totalWeight'].dirty ||
+          moveOutForm.controls['totalWeight'].touched)
+      "
+    >
+      Poids total is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--Type de document douanier-->
+  <mat-form-field appearance="outline">
+    <mat-label>Type de document douanier</mat-label>
+    <mat-select name="customsDocType" formControlName="customsDocType" required>
+      <mat-option
+        *ngFor="let customsDocType of customsDocTypes"
+        [value]="customsDocType"
+      >
+        {{ customsDocType }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['customsDocType'].hasError('required') &&
+        (moveOutForm.controls['customsDocType'].dirty ||
+          moveOutForm.controls['customsDocType'].touched)
+      "
+    >
+      Type de document douanier is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--Référence de document douanier-->
+  <mat-form-field appearance="outline">
+    <mat-label>Référence de document douanier</mat-label>
+    <input
+      matInput
+      name="customsDocRef"
+      formControlName="customsDocRef"
+      type="text"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveOutForm.controls['customsDocRef'].hasError('required') &&
+        (moveOutForm.controls['customsDocRef'].dirty ||
+          moveOutForm.controls['customsDocRef'].touched)
+      "
+    >
+      Référence de document douanier is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="link" type="submit">
+    <mat-icon>send</mat-icon>Envoyer
+  </button>
+</form>
+<button
+  mat-raised-button
+  class="button"
+  color="link"
+  (click)="moveOutForm.reset()"
+>
+  <mat-icon>restart_alt</mat-icon>Reset
+</button>

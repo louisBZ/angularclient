@@ -1,0 +1,217 @@
+<h1>Saisie d'une entrée</h1>
+<form [formGroup]="moveInForm" (ngSubmit)="onSubmit()">
+  <!--warehousCode-->
+  <mat-form-field appearance="outline">
+    <mat-label>Code magasin d'origine</mat-label>
+    <mat-select name="warehousCode" formControlName="warehousCode" required>
+      <mat-option
+        *ngFor="let warehousCode of warehousCodes"
+        [value]="warehousCode"
+      >
+        {{ warehousCode }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveInForm.controls['warehousCode'].hasError('required') &&
+        (moveInForm.controls['warehousCode'].dirty ||
+          moveInForm.controls['warehousCode'].touched)
+      "
+    >
+      Type de référence is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--warehousLabel-->
+  <mat-form-field appearance="outline">
+    <mat-label>Magasin d'origine</mat-label>
+    <input
+      matInput
+      name="warehousLabel"
+      formControlName="warehousLabel"
+      type="text"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['warehousLabel'].hasError('required') &&
+        (moveInForm.controls['warehousLabel'].dirty ||
+          moveInForm.controls['warehousLabel'].touched)
+      "
+    >
+      WarehousLabel is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--description-->
+  <mat-form-field appearance="outline">
+    <mat-label>description</mat-label>
+    <input
+      matInput
+      name="description"
+      formControlName="description"
+      type="text"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['description'].hasError('required') &&
+        (moveInForm.controls['description'].dirty ||
+          moveInForm.controls['description'].touched)
+      "
+    >
+      WarehousLabel is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--customsStatus-->
+  <mat-form-field appearance="outline">
+    <mat-label>Statut douanier</mat-label>
+    <mat-select name="customsStatus" formControlName="customsStatus" required>
+      <mat-option
+        *ngFor="let customsStatus of customsStatusList"
+        [value]="customsStatus"
+      >
+        {{ customsStatus }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveInForm.controls['customsStatus'].hasError('required') &&
+        (moveInForm.controls['customsStatus'].dirty ||
+          moveInForm.controls['customsStatus'].touched)
+      "
+    >
+      Statut douanier is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--refType-->
+  <mat-form-field appearance="outline">
+    <mat-label>Type de référence</mat-label>
+    <mat-select name="refType" formControlName="refType" required>
+      <mat-option *ngFor="let refType of refTypes" [value]="refType">
+        {{ refType }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        moveInForm.controls['refType'].hasError('required') &&
+        (moveInForm.controls['refType'].dirty ||
+          moveInForm.controls['refType'].touched)
+      "
+    >
+      Type de référence is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--ref-->
+  <mat-form-field appearance="outline">
+    <mat-label>Référence</mat-label>
+    <input matInput name="ref" formControlName="ref" type="number" required />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['ref'].hasError('required') &&
+        (moveInForm.controls['ref'].dirty || moveInForm.controls['ref'].touched)
+      "
+    >
+      Référence is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--quantity-->
+  <mat-form-field appearance="outline">
+    <mat-label>Quantité</mat-label>
+    <input
+      matInput
+      name="quantity"
+      formControlName="quantity"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['quantity'].hasError('required') &&
+        (moveInForm.controls['quantity'].dirty ||
+          moveInForm.controls['quantity'].touched)
+      "
+    >
+      Quantité is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--weight-->
+  <mat-form-field appearance="outline">
+    <mat-label>Poids</mat-label>
+    <input
+      matInput
+      name="weight"
+      formControlName="weight"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['weight'].hasError('required') &&
+        (moveInForm.controls['weight'].dirty ||
+          moveInForm.controls['weight'].touched)
+      "
+    >
+      Poids is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--totalQuantity-->
+  <mat-form-field appearance="outline">
+    <mat-label>Quantité total</mat-label>
+    <input
+      matInput
+      name="totalQuantity"
+      formControlName="totalQuantity"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['totalQuantity'].hasError('required') &&
+        (moveInForm.controls['totalQuantity'].dirty ||
+          moveInForm.controls['totalQuantity'].touched)
+      "
+    >
+      Quantité total is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!--totalWeight-->
+  <mat-form-field appearance="outline">
+    <mat-label>Poids total</mat-label>
+    <input
+      matInput
+      name="totalWeight"
+      formControlName="totalWeight"
+      type="number"
+      required
+    />
+    <mat-error
+      *ngIf="
+        moveInForm.controls['totalWeight'].hasError('required') &&
+        (moveInForm.controls['totalWeight'].dirty ||
+          moveInForm.controls['totalWeight'].touched)
+      "
+    >
+      Poids total is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="link" type="submit">
+    <mat-icon>send</mat-icon>Envoyer
+  </button>
+</form>
+<button
+  mat-raised-button
+  class="button"
+  color="link"
+  (click)="moveInForm.reset()"
+>
+  <mat-icon>restart_alt</mat-icon>Reset
+</button>
